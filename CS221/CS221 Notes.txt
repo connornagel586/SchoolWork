@@ -1,0 +1,19 @@
+****************
+6/6/2016
+
+Iterator
+
+An iterator object is a "one shot object"
+
+	Takes a snapshot when the iterator is instantiated.
+
+	Goes through all the element of a collection at once.
+
+Iterator interface:
+
+	boolean hasNext()
+
+	E next()
+
+	void remove()
+
