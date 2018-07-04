@@ -1,9 +1,6 @@
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.util.Stack;
 
 public class BTree {
 	private int degree;
@@ -53,9 +50,6 @@ public class BTree {
 	}
 
 	public void insertNodeNonFull(BTreeNode x, TreeObject o) throws IOException {
-		// I think this is working please double check.
-		// Also look at the pic I sent. The old code is below and the commented out code is the 
-		//book code.
 		
 		int i = x.numKeys - 1;
 		if (x.isLeaf) {
@@ -250,7 +244,7 @@ public class BTree {
 //	}
 	
 	
-/*	@SuppressWarnings("hiding")
+/*	
 	public TreeObject bTreeSearch(BTreeNode x, TreeObject o) {
 		
 		int i = 0;
@@ -301,7 +295,7 @@ public class BTree {
 	 
 	}	
 	*/
-	@SuppressWarnings("hiding")
+
 	private class BTreeNode {
 
 		TreeObject[] keys;
@@ -321,14 +315,14 @@ public class BTree {
 			numKeys = 0;
 		}
 
-		BTreeNode(int i) {
-			keys = new TreeObject[2 * i - 1];
-			childPointers = new int[2 * i];
-			for(int j = 0; j < 2 * degree; j++){
-				childPointers[j] = -1;
-			}
-			numKeys = 0;
-		}
+//		BTreeNode(int i) {
+//			keys = new TreeObject[2 * i - 1];
+//			childPointers = new int[2 * i];
+//			for(int j = 0; j < 2 * degree; j++){
+//				childPointers[j] = -1;
+//			}
+//			numKeys = 0;
+//		}
 
 		TreeObject getKeys(int i) {
 			return keys[i];
