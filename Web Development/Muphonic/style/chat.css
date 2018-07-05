@@ -1,0 +1,141 @@
+.user_chats{
+	min-height: 500px;
+	width: 20%;
+	margin: auto 0.5%;
+	background-color:#63503e;
+	text-align:center;
+  display:block;
+  float:left;
+	/* border: solid 1px; */
+	border-radius: 5px;
+}
+
+.chat_panel{
+	width: 78%;
+	min-height:500px;
+	background-color:#63503e;
+	text-align:center;
+	float:right;
+	position:relative;
+	/* border: solid 1px; */
+	border-radius: 5px;
+}
+#chat_panel{
+  background-color:#a09f9d;
+  min-height:400px;
+  float:right;
+width: 30%;
+  border: solid 1px;
+  border-radius: 5px;
+  margin: 5px;
+}
+#chat_panel p {
+  background-color: #484343;
+  margin:0;
+  color: white;
+
+}
+#chat_panel form {
+  margin:5%;
+}
+#chat_panel form > textarea{
+  width: 82%;
+  resize: none;
+  padding:0;
+  margin:0;
+  height:100%;
+}
+#chatbox{
+  background-color: white;
+  height: 400px;
+  width: 90%;
+  margin:5%;
+  border: solid 1px;
+  border-radius: 3px;
+}
+.chat{
+  margin: 10px;
+  padding: 5px;
+  text-align:left;
+  border: solid 1px;
+	text-decoration: none;
+	border-color:black;
+	color: black;
+	background-color:#cec3bb;
+	border-radius: 5px;
+	cursor: pointer;
+}
+#chats{
+	min-height:50%;
+
+}
+.new_chat{
+	position:absolute;
+	bottom:0;
+	left:0;
+	width:100%;
+}
+.new_chat form{
+	float:left;
+	margin:10px;
+	padding: 5px;
+	border: solid 1px;
+	background-color: #484343;
+	border: solid 2px;
+	border-radius: 5px;
+	position:absolute;
+	bottom: 5px;
+	left: 100px;
+}
+.new_chat form > textarea[name="title"]{
+	float:left;
+	border: solid 1px;
+	margin:5px;
+	width: 430px;
+	height:60px;
+	border-radius: 5px;
+	resize: none;
+}
+.new_chat form > textarea[name="topic_text"]{
+	float:left;
+	border: solid 1px;
+	margin:5px;
+	width: 550px;
+	height:230px;
+	border-radius: 5px;
+	resize: none;
+}
+#add_chat{
+  margin: 10px;
+	float:left;
+	position:absolute;
+	bottom:5px;
+	left: 5px;
+}
+.chat span{
+float:right;
+}
+.chat_page{
+	width: 100%;
+	min-height:500px;
+	background-color:#b3a195;
+	text-align:center;
+	float:left;
+	margin:auto;
+	position:relative;
+	border: solid 1px;
+	border-radius:2px;
+}
+.main{
+	padding: 0.5%;
+	margin: 20px 19% 80px 1%;
+
+}
+#comment_panel{
+	width:90%;
+	margin:2% 5%;
+	border:solid 1px;
+	position:relative;
+	min-height:400px;
+	background-color: #a09f9d;
+}

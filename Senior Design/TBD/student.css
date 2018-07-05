@@ -1,0 +1,299 @@
+
+html, body{
+	margin: 0px;
+	padding: 0px;
+	font-family: Helvetica, sans-serif;
+	height: 100%;
+	width: 100%;
+	min-height: 100%;
+	width: auto;
+
+}
+body{
+	min-height: 100%;
+}
+#nav{
+	padding:10px 0px;
+	display:inline;
+}
+#nav > ul {
+	margin: 0;
+	list-style-type: none;
+	font-weight: bold;
+	color: white;
+	padding: 0;
+}
+#nav > ul > li{
+	width:100%;
+	padding: 0;
+	display:inline;
+	list-style-type: none;
+	height: 25px;
+
+}
+
+#container {
+	min-height:100%;
+	position:relative;
+	background-color: #09347a;
+}
+
+#banner {
+	background-color: #D64309;
+	font-size: 18px;
+	padding:5px 10px;
+	margin: 0px 10%;
+	border-radius: 0px 0px 5px 5px;
+	color: white;
+
+}
+fieldset{
+	border:0;
+}
+legend{
+	margin:0;
+	padding:0;
+	width: 100%;
+}
+
+h4, p {
+	margin:0;
+}
+h3 {
+	background-color:#D64309;
+	padding: 20px;
+	margin:0px 0px 40px 0px;
+	color: white;
+	border-bottom: outset;
+	border-color: #D64309;s
+}
+h1 {
+	margin:0 0 10px 0;
+	font-size: 16px;
+}
+
+header, footer {
+	color: #838396;
+	background-color: #d6d6ea;
+
+}
+header {
+	border-bottom: outset 5px;
+	width: 100%;
+	font-family: Helvetica, sans-serif;
+	background-color: #09347a;
+	padding: 20px 0 0px 20px;
+}
+img {
+	height: 60px;
+}
+a, a:active, a:hover, a:visited {
+	color: inherit;
+	text-decoration:none;
+}
+input {
+	margin: 5px 5px 5px 0px;
+	border-radius: 2px 2px 2px 2px;
+	padding: 2px;
+}
+select{
+	width: 173px;
+	height: 21px;
+	margin: 5px 5px 5px 0px;
+	border-radius: 2px 2px 2px 2px;
+}
+textarea {
+	margin: 5px 5px 5px 0px;
+}
+
+#main{
+	margin: 30px 6% 40px 6%;
+	border-radius:10px;
+	border-style: groove;
+	background-color: #09347a;
+	min-height: 100%;
+	border-color: #D64309;
+
+}
+.semesterList{
+	margin: 0px;
+	padding: 0px 0px 50px 0px;
+	min-height: 400px;
+	border-radius: 10px;
+	border-style: solid;
+	background-color: #FFFFFF;
+	border-color: #D64309;
+
+}
+.semesterForm{
+	margin: 0% 23% 0% 8%;
+	padding: 20px 3%;
+	background-color: #09347a;
+	color:white;
+	border-radius: 5px 5px 5px 5px;
+	border-style: groove;
+	border-color: #D64309;
+	border-width: thick;
+
+}
+
+footer {
+	border-top: solid 1px;
+	padding: 10px;
+	margin:0;
+	bottom:0;
+	width:100%;
+	height: 20px;
+	color:white;
+	background-color: #09347a;
+}
+.progressReport, .semesterGoals {
+	height: 120px;
+	width: 40%;
+	border-radius: 5px 5px 5px 5px;
+}
+table {
+	margin: 20px 5% 20px 5%;
+	width:90%;
+  border-collapse: collapse;
+	border-width: thick;
+	background-color: white;
+	color:black;
+	border-radius: 5px 5px 5px 5px;
+}
+
+table, th, td {
+	border-color: #D64309;
+	border-style: groove;
+  padding: 10px 10px;
+
+}
+
+
+th{
+	background-color:#09347a;
+	color:white;
+	border-color: #D64309;
+	border-width: thick;
+}
+
+input[type=submit] {
+	background-color: #D64309;
+	text-align: center;
+	width: 100px;
+	height: 30px;
+	color: white;
+	margin: 4px 0;+
+	border: none;
+	border-radius: 4px;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+.semesterWidget{
+	border: groove;
+	border-width: thick;
+	background-color: #09347a;
+	border-color: #D64309;
+	color: #FFFFFF;
+	margin: 20px 5%;
+	border-radius: 5px 5px 5px 5px;
+	padding: 0px 0px 10px 0px;
+
+}
+.semesterInfo{
+	padding: 20px 5%;
+	margin: 0;
+	width: 90%;
+	font-size:15px;
+	border-bottom: outset;
+	border-color: #D64309;
+	background-color:#D64309;
+}
+.displayText{
+	margin: 10px 5% 10px 5%;
+	width:85%;
+	background-color: #FFFFFF;
+	color: black;
+	min-height:40px;
+	padding: 2%;
+	border: groove;
+	border-width: thick;
+	border-color: #D64309;
+	border-radius: 5px 5px 5px 5px;
+}
+#headerImage{
+	margin-left:;
+}
+
+
+
+/* Navbar container */
+.navbar {
+  overflow: hidden;
+  background-color: #09347a;
+  font-family: Arial;
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* The dropdown container */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+  font-size: 16px; 
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+
+/* Add a red background color to navbar links on hover */
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: #D64309;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #09347a;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}

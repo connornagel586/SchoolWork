@@ -1,0 +1,49 @@
+<?php 
+session_start();
+?>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<link rel="icon" href="boiseStateLogo.png" type="image/x-icon" />
+	<script type="text/javascript" src="jquery.3.3.1"></script>
+	<script type="text/javascript" src="js/validation/dist/jquery.validate.js"></script>
+</head>
+<body>
+	<div id="topLogo">
+	<header>
+		<div>
+		<img src="https://my.Boisestate.edu/assets/nav-logo.png">
+		</div>
+	</header>
+  <div class="center">
+	<div id="banner">
+		<h4>Welcome to the Graduate Login Page</h4>
+	</div>
+		<div class="loginForm">
+      <div id="middle">
+			<form action="loginhandler.php" method="post">
+			<fieldset>
+			<legend>Please enter an email and student id</legend>	
+  		Email:
+  		<input type="email" class="User" placeholder="Boise State Username" name="email"><br>
+  		Student Id:
+  		<input type="text" number class="Password" placeholder="Password..." name="student_id"><br>
+			<input type = "submit" value="Sign In">
+		</fieldset>
+			</form>
+    </div>
+		</div>
+	</div>
+</div>
+
+	<footer>
+		<p>Boise State University 2018 Team TBD</p>
+	</footer>
+</div>
+</body>
+
+</html>

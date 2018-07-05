@@ -1,0 +1,18 @@
+
+.comments{
+  width:35%;
+  margin:0px 5%;
+  min-height:200px;
+  background-color:#b3a195;
+  border:solid 1px;
+  float:left;
+}
+
+.favorites{
+  width:35%;
+  margin:0px 5%;
+  min-height:200px;
+  background-color: #b3a195;
+  border:solid 1px;
+  float:left;
+}

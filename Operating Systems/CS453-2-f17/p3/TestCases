@@ -1,66 +1,45 @@
-#
-#An incomplete list of test cases
-#
-
-#####Test1
-exit
-#####
+Test Cases
 
 
-#####Test2
-<Ctrl>-d
-#####
 
+    ~~~~~Test Cases~~~~		~~~~~~~Result~~~~~~~
 
-#####Test3
-#test for empty and blank commands
+	cd <path>		    switches cwd
+	
+	pwd			    returns p3 directory contents
 
+	cd mydash-src pwd	    returns mydash-src contents
 
-exit
-#####
+	cd ..			    changes to parent directory
+	
+	touch <name>		    creates a new file
 
-#####Test4
-mydash -v
-#####
+	sleep 10&		    starts sleep in background
 
+	sleep 10 &		    starts sleep in background
 
-#####Test5
-export DASH_PROMPT="myprompt:"
-mydash
-exit
-#####
+	sleep 10     &   	    starts sleep in background
 
+	clear			    clears shell output
 
-#####Test6
-ls
-date
-ls -l -t -t -l
-exit
-#####
+	vim mydash.c		    opens file in vim
 
+	./mydash -v		    displays version
 
-#####Test7
-vim
-gvim
-exit
+	EOF signal		    exits mydash
 
+	exit			    exits mydash
 
-#####Test8
-cd
-pwd
-cd /tmp
-pwd
-cd /home/amit/workspace/mydash/mydash-src/
-pwd
-cd jfdkjfdjfd
-exit
-#####
+	loop then ^Z                stop loop process
 
-#####Test9
-sleep 2 &
-sleep 2&
-#wait for 2 secs
-<enter>
-exit
-#####
+	loop then ^C		    interrupt loop process
 
+	./mydash		    opens new shell as a process
+
+	sleep 10 & 		    removes trailing space and executes
+
+	^Z			    Ignores signal
+	
+	^C			    Ignores signal
+
+	""-empty string	   	    Returns new prompt

@@ -1,0 +1,153 @@
+.user_topics{
+	min-height: 500px;
+	width: 20%;
+	margin: auto 0.5%;
+	background-color:#63503e;
+	text-align:center;
+  display:block;
+  float:left;
+	/* border: solid 1px; */
+	border-radius: 5px;
+}
+
+.topic_panel{
+	width: 78%;
+	min-height:500px;
+	background-color:#63503e;
+	text-align:center;
+	float:left;
+	position:relative;
+	/* border: solid 1px; */
+	border-radius: 5px;
+}
+.topic{
+  margin: 10px;
+  padding: 5px;
+  text-align:left;
+  border: solid 1px;
+	text-decoration: none;
+	border-color:black;
+	color: black;
+	background-color:#cec3bb;
+	border-radius: 5px;
+	cursor: pointer;
+}
+#topics{
+	min-height:50%;
+
+}
+.new_topic{
+	position:absolute;
+	bottom:0;
+	left:0;
+	width:100%;
+}
+.new_topic form{
+	float:left;
+	margin:10px;
+	padding: 5px;
+	border: solid 1px;
+	background-color: #484343;
+	border: solid 2px;
+	border-radius: 5px;
+	position:absolute;
+	bottom: 5px;
+	left: 100px;
+}
+.new_topic form > textarea[name="title"]{
+	float:left;
+	border: solid 1px;
+	margin:5px;
+	width: 430px;
+	height:60px;
+	border-radius: 5px;
+	resize: none;
+}
+.new_topic form > textarea[name="topic_text"]{
+	float:left;
+	border: solid 1px;
+	margin:5px;
+	width: 550px;
+	height:230px;
+	border-radius: 5px;
+	resize: none;
+}
+#add_topic{
+  margin: 10px;
+	float:left;
+	position:absolute;
+	bottom:5px;
+	left: 5px;
+}
+.topic span{
+float:right;
+font-size: 10px;
+color: silver;
+}
+.topic_page{
+	width: 100%;
+	min-height:500px;
+	background-color:#b3a195;
+	text-align:center;
+	float:left;
+	margin:auto;
+	position:relative;
+	border: solid 1px;
+	border-radius:2px;
+}
+.main{
+	padding: 0.5%;
+	margin: 20px 19% 80px 1%;
+
+}
+#comment_panel{
+	width:90%;
+	margin:2% 5%;
+	border:solid 1px;
+	position:relative;
+	min-height:400px;
+	background-color: #a09f9d;
+}
+.new_comment{
+	position:absolute;
+	bottom:0;
+	left:0;
+	width:100%;
+}
+.new_comment form{
+	float:left;
+	margin:10px;
+	padding: 5px;
+	border: solid 1px;
+	background-color: #484343;
+	border: solid 2px;
+	border-radius: 5px;
+	position:absolute;
+	bottom: 5px;
+	left: 100px;
+}
+.new_comment form > textarea[name="title"]{
+	float:left;
+	border: solid 1px;
+	margin:5px;
+	width: 430px;
+	height:60px;
+	border-radius: 5px;
+	resize: none;
+}
+.new_comment form > textarea[name="topic_text"]{
+	float:left;
+	border: solid 1px;
+	margin:5px;
+	width: 550px;
+	height:230px;
+	border-radius: 5px;
+	resize: none;
+}
+#add_comment{
+  margin: 10px;
+	float:left;
+	position:absolute;
+	bottom:5px;
+	left: 5px;
+}

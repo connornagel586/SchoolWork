@@ -1,0 +1,17 @@
+.about{
+  padding:2%;
+  width:60%;
+  margin: 0 18%;
+  display:inline-block;
+}
+#login, #create_account{
+  display:inline;
+}
+.create_account{
+  position:relative;
+  top: 30px;
+}
+.main{
+  margin-left:5%;
+  width:50%;
+}

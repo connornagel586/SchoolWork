@@ -1,66 +1,25 @@
-#
-#An incomplete list of test cases
-#
-
-#####Test1
-exit
-#####
+Test Cases
 
 
-#####Test2
-<Ctrl>-d
-#####
 
+    ~~~~~Test Cases~~~~		~~~~~~~Result~~~~~~~
 
-#####Test3
-#test for empty and blank commands
+	cd <path>		    switches cwd
+	
+	touch <name>		    creates a new file
 
+	sleep 10&		    starts sleep in background
 
-exit
-#####
+	sleep 10 &		    starts sleep in background
 
-#####Test4
-mydash -v
-#####
+	sleep 10     &   	    starts sleep in background
 
+	clear			    clears shell output
 
-#####Test5
-export DASH_PROMPT="myprompt:"
-mydash
-exit
-#####
+	vim mydash.c		    opens file in vim
 
+	./mydash -v		    displays version
 
-#####Test6
-ls
-date
-ls -l -t -t -l
-exit
-#####
+	EOF signal		    exits mydash
 
-
-#####Test7
-vim
-gvim
-exit
-
-
-#####Test8
-cd
-pwd
-cd /tmp
-pwd
-cd /home/amit/workspace/mydash/mydash-src/
-pwd
-cd jfdkjfdjfd
-exit
-#####
-
-#####Test9
-sleep 2 &
-sleep 2&
-#wait for 2 secs
-<enter>
-exit
-#####
-
+	exit			    exits mydash			
