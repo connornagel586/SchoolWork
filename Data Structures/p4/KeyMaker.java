@@ -33,14 +33,15 @@ class KeyMaker {
 			while (state == States.START) {
 				while(scan.hasNextLine()){
 					line = scan.nextLine();
-				}
+				
 				
 
-				if (line == null) {
+				if (line == "") {
 					state = States.END;
 
 				} else if (line.contains("ORIGIN")) {
 					state = States.SEQUENCE;
+				}
 				}
 			}
 		}
@@ -92,7 +93,7 @@ class KeyMaker {
 		}
 
 		case END_SEQUENCE: {
-
+			while(state == States.END_SEQUENCE)
 			line = scan.nextLine();
 			if (line != null) {
 
@@ -107,6 +108,10 @@ class KeyMaker {
 				state = States.END;
 				break;
 			}
+		}
+		
+		case END:{
+			
 		}
 		default:
 			return 0;
