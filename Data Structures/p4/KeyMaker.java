@@ -1,21 +1,22 @@
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
-import java.util.StringTokenizer;
 
 class KeyMaker {
 
 	public enum States {
-		START, SEQUENCE, UNKNOWN_CHARS, IN_SEQUENCE, END_SEQUENCE, END
+		START, SEQUENCE, UNKNOWN_CHARS, END_SEQUENCE, END
 	}
 
-	States state = States.START;
+	private States state = States.START;
 	Scanner scan;
+	private String line;
+	private String key;
+	private String ch;
+	
 	BTree tree;
 	File file;
 	String filename;
-	String line;
-	String key;
 	GeneBankCreateBTree create;
 	int currentChar;
 
@@ -24,9 +25,9 @@ class KeyMaker {
 		filename = (create.getFile().getName() + ".btree.data." + create.getSequenceLength() + "." + create.getDegree());
 		file = create.getFile();
 		tree = new BTree(create.getDegree(), create.getFile());
-		scan = new Scanner(create.getFile());
+		scan = new Scanner(create.getFile()).useDelimiter("\\s*");
 		currentChar = 0;
-
+		ch = "";
 	}
 
 	long getNextKey() throws Exception{
@@ -34,7 +35,7 @@ class KeyMaker {
 		while(finalKey == 0 && state != States.END){
 			finalKey = genNext();
 		}
-		return 0;
+		return finalKey;
 		}
 	private long genNext() throws Exception {
 		
@@ -46,16 +47,15 @@ class KeyMaker {
 			break;
 		}
 		case SEQUENCE: {
-			sequence();
-			
+			String seq = sequence();
+			if(seq != ""){
+				key = "";
+				return encode(seq);
+			}
+	
 			break;
 		}
-		case IN_SEQUENCE: {
-			buildSequence();
-			
-			break;
-
-		}
+		
 		case UNKNOWN_CHARS: {
 			unknownChar();
 			state = States.SEQUENCE;
@@ -76,7 +76,6 @@ class KeyMaker {
 	}
 	private void start(){
 		key = "";
-		while (state == States.START) {
 			while(scan.hasNextLine()){
 				line = scan.nextLine();
 			
@@ -86,79 +85,75 @@ class KeyMaker {
 
 			} else if (line.contains("ORIGIN")) {
 				state = States.SEQUENCE;
+				ch = scan.next();
 				break;
 			}
 			}
-		}
+		
 	}
 	
 	private String sequence(){
-		while (state == States.SEQUENCE) {
-			
-			String ch = scan.next();
-			StringTokenizer token = new StringTokenizer(ch);
 			if(Character.isDigit(ch.charAt(0))){
 				ch = scan.next();
 			}
 
 			if (ch.charAt(currentChar) == '/') {
 				state = States.END_SEQUENCE;
-				break;
+				
 			} else if (ch.charAt(currentChar) == 'n') {
 
 				state = States.UNKNOWN_CHARS;
-				break;
-			} else if (ch.contains("a") || ch.contains("t") || ch.contains("c") || ch.contains("g")) {
-				if (key.length() == create.getSequenceLength()) {
-					key = key.substring(1, create.getSequenceLength());
-					key += ch;
+				
+			} else if (ch.charAt(currentChar) == 'a' || ch.charAt(currentChar) == 't' || ch.charAt(currentChar) == 'c' || ch.charAt(currentChar) == 'g') {
+				if (key.length() == create.getSequenceLength() - 1) {
+				
+					key += ch.charAt(currentChar);
+					currentChar = currentChar - (create.getSequenceLength() - 2);
+					System.out.println(key);
+					return key;
 				} else {
-
-					key += ch;
-					if (key.length() == create.getSequenceLength()) {
-
-						
+					
+					key += ch.charAt(currentChar);
+					currentChar++;
+					
+					if(currentChar == ch.length()){
+						ch = scan.next();
+						currentChar = 0;
 					}
+			
 				}
+			
 			}
 
-		}
+		
 		return "";
 	}
 	
-	private void buildSequence(){
-		while (state == States.IN_SEQUENCE) {
-
-			String ch = scan.next();
-			if (ch.contains("/")) {
-
+	private void unknownChar(){
+		while(ch.charAt(currentChar) != 'a' || ch.charAt(currentChar) != 't' || ch.charAt(currentChar) != 'c' || ch.charAt(currentChar) != 'g'){
+			if(ch.charAt(currentChar) == '/'){
 				state = States.END_SEQUENCE;
-			} else if (ch.contains("a") || ch.contains("t") || ch.contains("c") || ch.contains("g")) {
-				key += ch;
-				state = States.SEQUENCE;
-				break;
+			}
+			else if(currentChar < ch.length())
+			{
+				currentChar++;
+			}else{
+				currentChar = 0;
+				ch = scan.next();
 			}
 		}
 	}
-	private void unknownChar(){
-		
-	}
 	private void endSequence(){
-		while(state == States.END_SEQUENCE){
+		
 			line = scan.nextLine();
-			if (line != null) {
-
-				line.trim();
-				if (line.equals("ORIGIN")) {
-
-					state = States.SEQUENCE;
-					break;
-				}
-			} else {
+			if (line == null) {
 				state = States.END;
-				break;
 			}
-			}
+				line.trim();
+				if (line.contains("ORIGIN")) {
+					state = States.SEQUENCE;
+				}
+			
 	
 	}
 	

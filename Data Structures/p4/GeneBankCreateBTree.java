@@ -145,10 +145,14 @@ public class GeneBankCreateBTree {
 		try {
 		BTree tree = new BTree(btree.getDegree(), btree.getFile());
 		KeyMaker genKey = new KeyMaker(btree);
-		TreeObject o = new TreeObject(genKey.getNextKey());
-		
-				 tree.insertNode(o);
-				
+		long key = genKey.getNextKey();
+		while(key != -1){
+		TreeObject o = new TreeObject(key);
+		System.out.println(key);
+				 //tree.insertNode(o);
+				 key = genKey.getNextKey();
+				 
+		}
 				 } catch (IOException e) {
 				 e.printStackTrace();
 				 } 
