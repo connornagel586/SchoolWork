@@ -208,7 +208,10 @@ public class BTree {
 				 + current + 4 + 1;
 		return size;
 	}
-	
+	public String printTree() throws IOException{
+		traverseTree(root);
+		return null;
+	}
 	private Object traverseTree(BTreeNode x) throws IOException {
 		
 		for (int i = 0; i < x.childPointers.length; i++) {;
@@ -217,9 +220,13 @@ public class BTree {
 		return traverseTree(DiskRead(x.childPointers[x.childPointers.length - 1]));
 	}
 	
-	private File printDebugInfo(File travFile){
+	private String printDebugInfo(BTreeNode node) throws IOException{
+		TreeObject[] obj = node.keys;
+		System.out.println(obj.toString());
+		
+		
 		//Call the traversal and print to the travFile all the debug stuff.
-		return travFile;
+		return obj.toString();
 	}
 
 	/**

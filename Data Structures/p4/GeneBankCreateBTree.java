@@ -1,14 +1,11 @@
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Scanner;
-import java.util.regex.Pattern;
-import java.util.StringTokenizer;
 
 public class GeneBankCreateBTree {
 	int debugLevel = -1, cacheSize, degree = -1, sequenceLength = 0;
 	boolean useCache = false;
 	private File file;
+	private File output;
 	KeyMaker genKey;
 	
 
@@ -24,6 +21,12 @@ public class GeneBankCreateBTree {
 		return this.file = f;
 	}
 
+	public File setOutputfile(File f){
+		return this.output = f;
+	}
+	public File getOutputfile(){
+		return this.output;
+	}
 	public int getDebugLevel() {
 		return debugLevel;
 	}
@@ -92,6 +95,8 @@ public class GeneBankCreateBTree {
 				System.exit(0);
 			}
 			btree.setFile(new File(args[2]));
+			
+			btree.setOutputfile(new File(btree.getFile().getName() + ".btree.data." + btree.getSequenceLength() + "." + btree.getDegree()));
 
 			// Check sequence length
 			if (Integer.parseInt(args[3]) > 1 || Integer.parseInt(args[3]) < 31) {
@@ -143,16 +148,19 @@ public class GeneBankCreateBTree {
 		GeneBankCreateBTree btree = new GeneBankCreateBTree();
 		btree.assessArguments(args, btree);
 		try {
-		BTree tree = new BTree(btree.getDegree(), btree.getFile());
+		BTree tree = new BTree(btree.getDegree(), btree.getOutputfile());
 		KeyMaker genKey = new KeyMaker(btree);
 		long key = genKey.getNextKey();
 		while(key != -1){
 		TreeObject o = new TreeObject(key);
-		System.out.println(key);
-				 //tree.insertNode(o);
+		
+				 tree.insertNode(o);
 				 key = genKey.getNextKey();
+				 System.out.println(key);
+				 tree.printTree();
 				 
 		}
+		System.out.println("End of File");
 				 } catch (IOException e) {
 				 e.printStackTrace();
 				 } 

@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 class KeyMaker {
@@ -12,27 +14,29 @@ class KeyMaker {
 	Scanner scan;
 	private String line;
 	private String key;
-	private String ch;
+	private char ch;
 	
 	BTree tree;
 	File file;
-	String filename;
 	GeneBankCreateBTree create;
 	int currentChar;
+	LinkedList<Character> thisArray;
 
+	@SuppressWarnings("resource")
 	KeyMaker(GeneBankCreateBTree create) throws IOException {
 		this.create = create;
-		filename = (create.getFile().getName() + ".btree.data." + create.getSequenceLength() + "." + create.getDegree());
 		file = create.getFile();
 		tree = new BTree(create.getDegree(), create.getFile());
 		scan = new Scanner(create.getFile()).useDelimiter("\\s*");
+		thisArray = new LinkedList<Character>();
 		currentChar = 0;
-		ch = "";
+		ch = '-';
+		
 	}
 
 	long getNextKey() throws Exception{
 		long finalKey = 0;
-		while(finalKey == 0 && state != States.END){
+		while(finalKey == 0){
 			finalKey = genNext();
 		}
 		return finalKey;
@@ -50,6 +54,7 @@ class KeyMaker {
 			String seq = sequence();
 			if(seq != ""){
 				key = "";
+				System.out.println(seq);
 				return encode(seq);
 			}
 	
@@ -66,8 +71,10 @@ class KeyMaker {
 			endSequence();
 			break;
 		}
-		case END:
-			break;
+		case END:{
+			scan.close();
+			return -1;
+		}
 		default:
 			break;
 		}
@@ -85,7 +92,7 @@ class KeyMaker {
 
 			} else if (line.contains("ORIGIN")) {
 				state = States.SEQUENCE;
-				ch = scan.next();
+				ch = (char)scan.next().charAt(0);
 				break;
 			}
 			}
@@ -93,36 +100,31 @@ class KeyMaker {
 	}
 	
 	private String sequence(){
-			if(Character.isDigit(ch.charAt(0))){
-				ch = scan.next();
+			if(Character.isDigit(ch)){
+				ch = (char)scan.next().charAt(0);
 			}
 
-			if (ch.charAt(currentChar) == '/') {
+			if (ch == '/') {
 				state = States.END_SEQUENCE;
 				
-			} else if (ch.charAt(currentChar) == 'n') {
+			} else if (ch == 'n') {
 
 				state = States.UNKNOWN_CHARS;
 				
-			} else if (ch.charAt(currentChar) == 'a' || ch.charAt(currentChar) == 't' || ch.charAt(currentChar) == 'c' || ch.charAt(currentChar) == 'g') {
-				if (key.length() == create.getSequenceLength() - 1) {
-				
-					key += ch.charAt(currentChar);
-					currentChar = currentChar - (create.getSequenceLength() - 2);
-					System.out.println(key);
-					return key;
-				} else {
-					
-					key += ch.charAt(currentChar);
-					currentChar++;
-					
-					if(currentChar == ch.length()){
-						ch = scan.next();
-						currentChar = 0;
+			} else if (ch == 'a' || ch == 't' || ch == 'c' || ch == 'g') {
+				if(thisArray.size() != create.getSequenceLength()){
+					thisArray.addLast(ch);
+					ch = scan.next().charAt(0);
+					if(thisArray.size() == create.getSequenceLength()){
+						String thisString = thisArray.toString().replaceAll("[,\\[\\] ]", "");
+						return thisString;
 					}
-			
+				}else{
+					thisArray.addLast(ch);
+					thisArray.removeFirst();
+					ch = scan.next().charAt(0);
+					return thisArray.toString().replaceAll("[,\\[\\] ]", "");
 				}
-			
 			}
 
 		
@@ -130,26 +132,23 @@ class KeyMaker {
 	}
 	
 	private void unknownChar(){
-		while(ch.charAt(currentChar) != 'a' || ch.charAt(currentChar) != 't' || ch.charAt(currentChar) != 'c' || ch.charAt(currentChar) != 'g'){
-			if(ch.charAt(currentChar) == '/'){
+		while(ch != 'a' || ch != 't' || ch != 'c' || ch != 'g'){
+			if(ch == '/'){
 				state = States.END_SEQUENCE;
 			}
-			else if(currentChar < ch.length())
-			{
-				currentChar++;
-			}else{
-				currentChar = 0;
-				ch = scan.next();
+			else{
+				ch = (char)scan.nextByte();
 			}
 		}
 	}
 	private void endSequence(){
 		
+			if(scan.hasNextLine())
 			line = scan.nextLine();
-			if (line == null) {
+			else{
 				state = States.END;
+				scan.close();
 			}
-				line.trim();
 				if (line.contains("ORIGIN")) {
 					state = States.SEQUENCE;
 				}
